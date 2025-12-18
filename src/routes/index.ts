@@ -4,6 +4,7 @@ import userRoutes from './user.routes';
 import categoryRoutes from './category.routes';
 import productRoutes from './product.routes';
 import addressRoutes from './address.routes';
+import orderRoutes from './order.routes';
 
 const router = Router();
 
@@ -55,5 +56,8 @@ router.use('/products', productRoutes);
 
 // Address routes
 router.use('/addresses', addressRoutes);
+
+// Order routes
+router.use('/orders', orderRoutes);
 
 export default router;
