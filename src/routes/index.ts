@@ -2,6 +2,8 @@ import { Router } from 'express';
 import { logger } from '../utils';
 import userRoutes from './user.routes';
 import categoryRoutes from './category.routes';
+import productRoutes from './product.routes';
+import addressRoutes from './address.routes';
 
 const router = Router();
 
@@ -47,5 +49,11 @@ router.use('/users', userRoutes);
 
 // Category routes
 router.use('/categories', categoryRoutes);
+
+// Product routes
+router.use('/products', productRoutes);
+
+// Address routes
+router.use('/addresses', addressRoutes);
 
 export default router;
