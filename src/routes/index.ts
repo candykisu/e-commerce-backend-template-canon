@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { logger } from '../utils';
-import exampleRoutes from './example.routes';
+import userRoutes from './user.routes';
+import categoryRoutes from './category.routes';
 
 const router = Router();
 
@@ -41,7 +42,10 @@ router.get('/healthz', (_, res) => {
   });
 });
 
-// Example routes
-router.use('/examples', exampleRoutes);
+// User routes
+router.use('/users', userRoutes);
+
+// Category routes
+router.use('/categories', categoryRoutes);
 
 export default router;

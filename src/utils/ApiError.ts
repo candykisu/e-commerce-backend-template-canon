@@ -43,4 +43,22 @@ export class NotFoundError extends ApiError {
   }
 }
 
+export class ConflictError extends ApiError {
+  constructor(message = 'Conflict') {
+    super(message, 409);
+  }
+}
+
+export class ValidationError extends ApiError {
+  constructor(message = 'Validation Error') {
+    super(message, 422);
+  }
+}
+
+export class InternalServerError extends ApiError {
+  constructor(message = 'Internal Server Error') {
+    super(message, 500);
+  }
+}
+
 export default ApiError;
