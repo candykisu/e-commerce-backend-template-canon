@@ -1,0 +1,32 @@
+meta {
+  name: Bulk Update Inventory
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{baseURL}}/api/admin/inventory/bulk
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "updates": [
+      {
+        "productId": 1,
+        "quantity": 100,
+        "reason": "Stock replenishment"
+      },
+      {
+        "productId": 2,
+        "quantity": 50,
+        "reason": "Inventory adjustment"
+      }
+    ]
+  }
+}
+
+docs {
+  Bulk update product inventory quantities with tracking reasons
+}

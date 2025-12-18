@@ -1,0 +1,27 @@
+meta {
+  name: Get Dashboard Analytics
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/api/admin/dashboard
+  body: none
+  auth: none
+}
+
+params:query {
+  ~dateFrom: 2024-01-01
+  ~dateTo: 2024-12-31
+  ~period: month
+}
+
+docs {
+  Get comprehensive dashboard analytics including:
+  - Total orders, revenue, customers, products
+  - Recent orders
+  - Top products
+  - Sales chart data
+  - Order status breakdown
+  - Low stock products
+}

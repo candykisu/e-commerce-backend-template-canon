@@ -1,0 +1,15 @@
+meta {
+  name: Get Category Tree
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/api/categories/tree
+  body: none
+  auth: none
+}
+
+docs {
+  Get hierarchical category tree structure with parent-child relationships
+}

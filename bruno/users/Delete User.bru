@@ -1,0 +1,15 @@
+meta {
+  name: Delete User
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseURL}}/api/users/550e8400-e29b-41d4-a716-446655440000
+  body: none
+  auth: none
+}
+
+docs {
+  Delete user account (soft delete - sets isActive to false)
+}

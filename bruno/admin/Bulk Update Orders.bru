@@ -1,0 +1,25 @@
+meta {
+  name: Bulk Update Orders
+  type: http
+  seq: 11
+}
+
+put {
+  url: {{baseURL}}/api/admin/orders/bulk
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "orderIds": [1, 2, 3],
+    "status": "shipped",
+    "notes": "Bulk shipment processed"
+  }
+}
+
+docs {
+  Bulk update order status with optional notes.
+  
+  Valid statuses: pending, confirmed, processing, shipped, delivered, cancelled, refunded
+}

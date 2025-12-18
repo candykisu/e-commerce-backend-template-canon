@@ -1,0 +1,24 @@
+meta {
+  name: Update Address
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/api/addresses/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "address1": "456 Updated Street",
+    "city": "Updated City",
+    "postalCode": "10002",
+    "isDefault": false
+  }
+}
+
+docs {
+  Update address information
+}

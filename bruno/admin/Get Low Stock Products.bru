@@ -1,0 +1,19 @@
+meta {
+  name: Get Low Stock Products
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{baseURL}}/api/admin/inventory/low-stock
+  body: none
+  auth: none
+}
+
+params:query {
+  ~threshold: 10
+}
+
+docs {
+  Get products with low stock levels below the specified threshold
+}

@@ -1,0 +1,26 @@
+meta {
+  name: Get All Products (Admin)
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseURL}}/api/admin/products
+  body: none
+  auth: none
+}
+
+params:query {
+  ~page: 1
+  ~limit: 20
+  ~categoryId: 1
+  ~status: active
+  ~search: laptop
+}
+
+docs {
+  Get all products with admin filtering capabilities:
+  - Pagination support
+  - Filter by category, status
+  - Search by name/description
+}

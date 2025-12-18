@@ -1,0 +1,33 @@
+meta {
+  name: Create Address
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/api/addresses
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userId": "550e8400-e29b-41d4-a716-446655440000",
+    "type": "shipping",
+    "firstName": "John",
+    "lastName": "Doe",
+    "company": "Tech Corp",
+    "address1": "123 Main Street",
+    "address2": "Apt 4B",
+    "city": "New York",
+    "state": "NY",
+    "postalCode": "10001",
+    "country": "US",
+    "phone": "+1234567890",
+    "isDefault": true
+  }
+}
+
+docs {
+  Create a new address for a user. Types: shipping, billing
+}
