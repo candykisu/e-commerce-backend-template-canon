@@ -1,0 +1,27 @@
+meta {
+  name: Trending Products
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/api/search/trending?limit=10
+  body: none
+  auth: none
+}
+
+params:query {
+  limit: 10
+}
+
+docs {
+  # Trending Products
+  
+  Get trending products based on featured status and recent creation.
+  
+  ## Query Parameters:
+  - `limit`: Maximum products to return (default: 10)
+  
+  ## Response includes:
+  - Array of trending products with full details
+}

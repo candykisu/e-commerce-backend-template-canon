@@ -1,0 +1,26 @@
+meta {
+  name: Get Review by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/api/reviews/1
+  body: none
+  auth: none
+}
+
+docs {
+  # Get Review by ID
+  
+  Retrieve a specific review by its ID with full details.
+  
+  ## Path Parameters:
+  - `reviewId`: ID of the review (required)
+  
+  ## Response:
+  - Complete review details including user info
+  - Associated media (images/videos)
+  - User's helpfulness vote (if authenticated)
+  - Helpfulness counts
+}

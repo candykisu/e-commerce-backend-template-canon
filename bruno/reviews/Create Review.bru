@@ -1,0 +1,44 @@
+meta {
+  name: Create Review
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/api/reviews
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "productId": 1,
+    "rating": 5,
+    "title": "Excellent product!",
+    "comment": "This product exceeded my expectations. The quality is outstanding and it works perfectly. I would definitely recommend it to others.",
+    "isRecommended": true,
+    "mediaUrls": [
+      "https://example.com/review-image-1.jpg",
+      "https://example.com/review-image-2.jpg"
+    ]
+  }
+}
+
+docs {
+  # Create Product Review
+  
+  Create a new review for a product with rating, title, comment, and optional media.
+  
+  ## Request Body:
+  - `productId`: ID of the product being reviewed (required)
+  - `orderId`: ID of the order for verified purchases (optional)
+  - `rating`: Rating from 1 to 5 stars (required)
+  - `title`: Review title (optional, max 255 chars)
+  - `comment`: Review comment (optional, 10-2000 chars)
+  - `isRecommended`: Whether user recommends the product (default: true)
+  - `mediaUrls`: Array of image/video URLs (optional, max 5)
+  
+  ## Response:
+  - Returns the created review with ID and metadata
+  - Review will be pending approval by default
+}

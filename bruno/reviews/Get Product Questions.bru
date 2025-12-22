@@ -1,0 +1,36 @@
+meta {
+  name: Get Product Questions
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseURL}}/api/reviews/products/1/questions?page=1&limit=10&sortBy=newest
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 10
+  sortBy: newest
+}
+
+docs {
+  # Get Product Questions
+  
+  Retrieve questions asked about a specific product.
+  
+  ## Path Parameters:
+  - `productId`: ID of the product (required)
+  
+  ## Query Parameters:
+  - `page`: Page number (default: 1)
+  - `limit`: Items per page (default: 10, max: 20)
+  - `sortBy`: Sort order (newest, oldest, most_answers)
+  
+  ## Response:
+  - Array of approved questions with user info
+  - Answer count for each question
+  - Pagination metadata
+}

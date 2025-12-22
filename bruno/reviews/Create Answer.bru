@@ -1,0 +1,34 @@
+meta {
+  name: Create Answer
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseURL}}/api/reviews/questions/1/answers
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "answer": "The warranty period is 2 years from the date of purchase. It covers manufacturing defects but not accidental damage. You can purchase extended warranty for accidental damage coverage."
+  }
+}
+
+docs {
+  # Create Answer to Question
+  
+  Answer a question that was asked about a product.
+  
+  ## Path Parameters:
+  - `questionId`: ID of the question (required)
+  
+  ## Request Body:
+  - `answer`: The answer text (required, 5-1000 chars)
+  
+  ## Response:
+  - Returns the created answer with ID and metadata
+  - Answer will be pending approval by default
+  - Question's answer count is automatically incremented
+}

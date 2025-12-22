@@ -1,0 +1,128 @@
+meta {
+  name: API Overview
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/api/healthz
+  body: none
+  auth: none
+}
+
+docs {
+  # Ecommerce Backend API Collection
+  
+  This Bruno collection contains comprehensive API tests for the ecommerce backend system.
+  
+  ## Available Endpoints:
+  
+  ### 🏥 Health Check
+  - GET /api/healthz - System health check
+  
+  ### 👥 Users (6 endpoints)
+  - POST /api/users - Create user
+  - GET /api/users - Get all users (paginated)
+  - GET /api/users/{id} - Get user by ID
+  - PUT /api/users/{id} - Update user
+  - DELETE /api/users/{id} - Delete user
+  
+  ### 📂 Categories (6 endpoints)
+  - POST /api/categories - Create category
+  - GET /api/categories - Get all categories
+  - GET /api/categories/tree - Get category tree
+  - GET /api/categories/{id} - Get category by ID
+  - PUT /api/categories/{id} - Update category
+  - DELETE /api/categories/{id} - Delete category
+  
+  ### 📦 Products (6 endpoints)
+  - POST /api/products - Create product
+  - GET /api/products - Get all products (with filters)
+  - GET /api/products/{id} - Get product by ID
+  - GET /api/products/slug/{slug} - Get product by slug
+  - PUT /api/products/{id} - Update product
+  - DELETE /api/products/{id} - Delete product
+  
+  ### 📍 Addresses (5 endpoints)
+  - POST /api/addresses - Create address
+  - GET /api/addresses/user/{userId} - Get user addresses
+  - GET /api/addresses/{id} - Get address by ID
+  - PUT /api/addresses/{id} - Update address
+  - DELETE /api/addresses/{id} - Delete address
+  
+  ### 📋 Orders (6 endpoints)
+  - POST /api/orders - Create order
+  - GET /api/orders - Get all orders (with filters)
+  - GET /api/orders/{id} - Get order by ID
+  - GET /api/orders/number/{orderNumber} - Get order by number
+  - PUT /api/orders/{id}/status - Update order status
+  - PUT /api/orders/{id}/cancel - Cancel order
+  
+  ### 🛒 Carts (15 endpoints)
+  - POST /api/carts - Create cart
+  - GET /api/carts/{id} - Get cart by ID
+  - GET /api/carts/user/{userId} - Get/create user cart
+  - GET /api/carts/guest/{sessionId} - Get/create guest cart
+  - POST /api/carts/{id}/add - Add item to cart
+  - PUT /api/carts/items/{itemId} - Update cart item
+  - DELETE /api/carts/items/{itemId} - Remove cart item
+  - DELETE /api/carts/{id}/clear - Clear cart
+  - POST /api/carts/merge - Merge carts
+  - GET /api/carts/{id}/stats - Get cart statistics
+  - GET /api/carts/{id}/count - Get cart count
+  - GET /api/carts/{id}/validate - Validate cart
+  - GET /api/carts/{id}/checkout-summary - Get checkout summary
+  - GET /api/carts/{id}/prepare-order - Prepare for order
+  - POST /api/carts/cleanup - Cleanup expired carts
+  
+  ### 🔍 Search (7 endpoints)
+  - GET /api/search/products - Advanced product search with filters
+  - GET /api/search/suggestions - Search autocomplete suggestions
+  - GET /api/search/filters - Available search filters
+  - GET /api/search/popular-terms - Popular search terms
+  - GET /api/search/trending - Trending products
+  - GET /api/search/related/{productId} - Related products
+  - GET /api/search/recently-viewed - Recently viewed products
+  
+  ### ⭐ Reviews & Ratings (10 endpoints)
+  - POST /api/reviews - Create product review
+  - GET /api/reviews/products/{productId} - Get product reviews
+  - GET /api/reviews/{reviewId} - Get review by ID
+  - POST /api/reviews/{reviewId}/helpful - Mark review helpful/not helpful
+  - GET /api/reviews/products/{productId}/summary - Get rating summary
+  - POST /api/reviews/questions - Create product question
+  - GET /api/reviews/products/{productId}/questions - Get product questions
+  - POST /api/reviews/questions/{questionId}/answers - Create answer
+  - GET /api/reviews/questions/{questionId}/answers - Get question answers
+  - GET /api/reviews/statistics - Review statistics (admin)
+  
+  ### 🔧 Admin Panel (19 endpoints)
+  - GET /api/admin/dashboard - Dashboard analytics
+  - GET /api/admin/analytics/{type} - Detailed analytics
+  - GET /api/admin/orders - Admin order management
+  - GET /api/admin/products - Admin product management
+  - GET /api/admin/customers - Admin customer management
+  - PUT /api/admin/products/bulk - Bulk product operations
+  - PUT /api/admin/inventory/bulk - Bulk inventory updates
+  - PUT /api/admin/orders/bulk - Bulk order updates
+  - GET /api/admin/stats/orders - Order statistics
+  - GET /api/admin/stats/system - System statistics
+  - GET /api/admin/inventory/low-stock - Low stock products
+  - GET /api/admin/activity/recent - Recent activity
+  - GET /api/admin/notifications - Admin notifications
+  - GET /api/admin/reports - Generate reports (JSON/CSV)
+  - POST /api/admin/maintenance/cleanup-carts - Cleanup carts
+  
+  ## Environment Variables:
+  - baseURL: http://localhost:4000 (configured in local.bru)
+  
+  ## Usage:
+  1. Start the server: npm run dev
+  2. Select 'local' environment in Bruno
+  3. Run individual requests or entire folders
+  4. Check response data and status codes
+  
+  ## Authentication:
+  Currently all endpoints are set to 'auth: none' for testing.
+  Update individual requests to add authentication when implemented.
+}

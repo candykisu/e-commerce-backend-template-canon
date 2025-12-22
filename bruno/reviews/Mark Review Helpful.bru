@@ -1,0 +1,34 @@
+meta {
+  name: Mark Review Helpful
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/api/reviews/1/helpful
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "isHelpful": true
+  }
+}
+
+docs {
+  # Mark Review as Helpful/Not Helpful
+  
+  Vote on whether a review is helpful or not helpful.
+  
+  ## Path Parameters:
+  - `reviewId`: ID of the review (required)
+  
+  ## Request Body:
+  - `isHelpful`: true for helpful, false for not helpful
+  
+  ## Notes:
+  - Users cannot vote on their own reviews
+  - Users can change their vote by calling this endpoint again
+  - Helpfulness counts are automatically updated
+}

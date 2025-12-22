@@ -5,6 +5,10 @@ import categoryRoutes from './category.routes';
 import productRoutes from './product.routes';
 import addressRoutes from './address.routes';
 import orderRoutes from './order.routes';
+import cartRoutes from './cart.routes';
+import adminRoutes from './admin.routes';
+import searchRoutes from './search.routes';
+import reviewRoutes from './review.routes';
 
 const router = Router();
 
@@ -59,5 +63,17 @@ router.use('/addresses', addressRoutes);
 
 // Order routes
 router.use('/orders', orderRoutes);
+
+// Cart routes
+router.use('/carts', cartRoutes);
+
+// Admin routes
+router.use('/admin', adminRoutes);
+
+// Search routes
+router.use('/search', searchRoutes);
+
+// Review routes
+router.use('/reviews', reviewRoutes);
 
 export default router;
