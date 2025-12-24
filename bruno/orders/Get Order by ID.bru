@@ -1,0 +1,15 @@
+meta {
+  name: Get Order by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/api/orders/1
+  body: none
+  auth: none
+}
+
+docs {
+  Get detailed order information by ID including items and addresses
+}

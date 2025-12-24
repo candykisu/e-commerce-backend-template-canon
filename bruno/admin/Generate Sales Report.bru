@@ -1,0 +1,25 @@
+meta {
+  name: Generate Sales Report
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{baseURL}}/api/admin/reports
+  body: none
+  auth: none
+}
+
+params:query {
+  type: sales
+  format: json
+  ~dateFrom: 2024-01-01T00:00:00Z
+  ~dateTo: 2024-12-31T23:59:59Z
+}
+
+docs {
+  Generate sales report in JSON or CSV format.
+  
+  Types: sales, products, customers, inventory
+  Formats: json, csv
+}

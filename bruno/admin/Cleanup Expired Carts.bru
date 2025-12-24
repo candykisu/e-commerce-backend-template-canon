@@ -1,0 +1,19 @@
+meta {
+  name: Cleanup Expired Carts
+  type: http
+  seq: 19
+}
+
+post {
+  url: {{baseURL}}/api/admin/maintenance/cleanup-carts
+  body: none
+  auth: none
+}
+
+params:query {
+  ~daysOld: 30
+}
+
+docs {
+  Cleanup expired guest carts older than specified days (default: 30 days)
+}

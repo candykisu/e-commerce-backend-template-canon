@@ -1,0 +1,23 @@
+meta {
+  name: Merge Carts
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseURL}}/api/carts/merge
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "guestCartId": 2,
+    "userId": "550e8400-e29b-41d4-a716-446655440000"
+  }
+}
+
+docs {
+  Merge a guest cart with a user cart when user logs in.
+  Guest cart will be deleted after merge.
+}

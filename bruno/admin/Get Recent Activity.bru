@@ -1,0 +1,19 @@
+meta {
+  name: Get Recent Activity
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{baseURL}}/api/admin/activity/recent
+  body: none
+  auth: none
+}
+
+params:query {
+  ~limit: 20
+}
+
+docs {
+  Get recent activity including recent orders and new users
+}

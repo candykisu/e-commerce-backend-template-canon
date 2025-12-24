@@ -1,0 +1,27 @@
+meta {
+  name: Add Item to Cart
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/api/carts/1/add
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "productId": 1,
+    "variantId": 1,
+    "quantity": 2
+  }
+}
+
+docs {
+  Add an item to the cart. If item already exists, quantity will be increased.
+  
+  - productId: Required product ID
+  - variantId: Optional product variant ID
+  - quantity: Quantity to add (1-100)
+}

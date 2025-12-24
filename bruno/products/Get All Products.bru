@@ -1,0 +1,25 @@
+meta {
+  name: Get All Products
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/api/products
+  body: none
+  auth: none
+}
+
+params:query {
+  ~page: 1
+  ~limit: 20
+  ~categoryId: 1
+  ~status: active
+  ~minPrice: 100
+  ~maxPrice: 3000
+  ~search: macbook
+}
+
+docs {
+  Get paginated list of products with filtering by category, status, price range, and search
+}

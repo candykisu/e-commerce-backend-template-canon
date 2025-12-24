@@ -1,0 +1,29 @@
+meta {
+  name: Get All Orders (Admin)
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/api/admin/orders
+  body: none
+  auth: none
+}
+
+params:query {
+  ~page: 1
+  ~limit: 20
+  ~status: pending
+  ~paymentStatus: paid
+  ~email: user@example.com
+  ~orderNumber: ORD-001
+  ~dateFrom: 2024-01-01
+  ~dateTo: 2024-12-31
+}
+
+docs {
+  Get all orders with admin filtering capabilities:
+  - Pagination support
+  - Filter by status, payment status, email, order number
+  - Date range filtering
+}

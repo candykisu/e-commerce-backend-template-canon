@@ -1,0 +1,18 @@
+meta {
+  name: Get Admin Notifications
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{baseURL}}/api/admin/notifications
+  body: none
+  auth: none
+}
+
+docs {
+  Get admin notifications including:
+  - Low stock alerts
+  - Pending order notifications
+  - System alerts
+}

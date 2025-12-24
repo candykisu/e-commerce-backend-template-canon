@@ -1,0 +1,15 @@
+meta {
+  name: Delete Category
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseURL}}/api/categories/1
+  body: none
+  auth: none
+}
+
+docs {
+  Delete category (soft delete - sets isActive to false)
+}
