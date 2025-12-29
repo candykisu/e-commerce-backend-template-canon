@@ -5,9 +5,8 @@ import categoryRoutes from './category.routes';
 import productRoutes from './product.routes';
 import addressRoutes from './address.routes';
 import orderRoutes from './order.routes';
-import searchRoutes from './search.routes';
-import reviewRoutes from './review.routes';
-import couponRoutes from './coupon.routes';
+import cartRoutes from './cart.routes';
+import adminRoutes from './admin.routes';
 
 const router = Router();
 
@@ -63,13 +62,10 @@ router.use('/addresses', addressRoutes);
 // Order routes
 router.use('/orders', orderRoutes);
 
-// Search routes
-router.use('/search', searchRoutes);
+// Cart routes
+router.use('/carts', cartRoutes);
 
-// Review routes
-router.use('/reviews', reviewRoutes);
-
-// Coupon routes
-router.use('/coupons', couponRoutes);
+// Admin routes
+router.use('/admin', adminRoutes);
 
 export default router;

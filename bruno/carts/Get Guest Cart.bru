@@ -1,0 +1,15 @@
+meta {
+  name: Get Guest Cart
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/api/carts/guest/guest-session-123
+  body: none
+  auth: none
+}
+
+docs {
+  Get or create cart for a guest session ID
+}

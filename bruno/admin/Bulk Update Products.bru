@@ -1,0 +1,28 @@
+meta {
+  name: Bulk Update Products
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{baseURL}}/api/admin/products/bulk
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "action": "activate",
+    "ids": [1, 2, 3],
+    "reason": "Bulk activation for promotion"
+  }
+}
+
+docs {
+  Bulk update products with actions:
+  - activate: Set products to active status
+  - deactivate: Set products to draft status
+  - archive: Archive products
+  
+  Actions: activate, deactivate, archive
+}

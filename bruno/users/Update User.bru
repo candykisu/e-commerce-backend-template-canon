@@ -1,0 +1,24 @@
+meta {
+  name: Update User
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/api/users/550e8400-e29b-41d4-a716-446655440000
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "firstName": "John Updated",
+    "lastName": "Doe Updated",
+    "phone": "+1234567891",
+    "isActive": true
+  }
+}
+
+docs {
+  Update user profile information (email and password require separate endpoints)
+}

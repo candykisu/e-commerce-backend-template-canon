@@ -1,0 +1,15 @@
+meta {
+  name: Get Checkout Summary
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseURL}}/api/carts/1/checkout-summary
+  body: none
+  auth: none
+}
+
+docs {
+  Get checkout summary with formatted cart items and totals for checkout page
+}

@@ -1,0 +1,22 @@
+meta {
+  name: Create Cart
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/api/carts
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userId": "550e8400-e29b-41d4-a716-446655440000",
+    "sessionId": "guest-session-123"
+  }
+}
+
+docs {
+  Create a new cart. Provide either userId for logged-in users or sessionId for guest users.
+}

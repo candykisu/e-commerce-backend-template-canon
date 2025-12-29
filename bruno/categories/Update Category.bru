@@ -1,0 +1,23 @@
+meta {
+  name: Update Category
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/api/categories/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Electronics Updated",
+    "description": "Updated description for electronics category",
+    "isActive": true
+  }
+}
+
+docs {
+  Update category information
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Update Order Status
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/api/orders/1/status
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "status": "shipped",
+    "paymentStatus": "paid",
+    "notes": "Order shipped via FedEx"
+  }
+}
+
+docs {
+  Update order status and payment status with optional notes
+}

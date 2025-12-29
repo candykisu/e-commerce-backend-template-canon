@@ -1,0 +1,15 @@
+meta {
+  name: Get Cart Count
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseURL}}/api/carts/1/count
+  body: none
+  auth: none
+}
+
+docs {
+  Get minimal cart information for header display (item count and total amount)
+}
