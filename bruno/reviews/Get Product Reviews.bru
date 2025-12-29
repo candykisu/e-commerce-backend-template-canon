@@ -1,0 +1,42 @@
+meta {
+  name: Get Product Reviews
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/api/reviews/products/1?page=1&limit=10&sortBy=newest&rating=5&verifiedOnly=false&withMedia=false
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 10
+  sortBy: newest
+  rating: 5
+  verifiedOnly: false
+  withMedia: false
+}
+
+docs {
+  # Get Product Reviews
+  
+  Retrieve reviews for a specific product with filtering and sorting options.
+  
+  ## Path Parameters:
+  - `productId`: ID of the product (required)
+  
+  ## Query Parameters:
+  - `page`: Page number (default: 1)
+  - `limit`: Items per page (default: 10, max: 50)
+  - `rating`: Filter by specific rating (1-5)
+  - `sortBy`: Sort order (newest, oldest, rating_high, rating_low, helpful)
+  - `verifiedOnly`: Show only verified purchase reviews
+  - `withMedia`: Show only reviews with images/videos
+  
+  ## Response:
+  - Array of reviews with user info, media, and helpfulness data
+  - Product rating summary
+  - Pagination metadata
+}

@@ -1,0 +1,45 @@
+meta {
+  name: Assign Coupon to Users
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseURL}}/api/coupons/assign
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "couponId": 1,
+    "userIds": [
+      "123e4567-e89b-12d3-a456-426614174000",
+      "987fcdeb-51d3-12a4-b456-426614174111",
+      "456e7890-e12b-34d5-c678-426614174222"
+    ]
+  }
+}
+
+docs {
+  # Assign Coupon to Users (Admin)
+  
+  Assign a specific coupon to selected users for targeted marketing.
+  
+  ## Request Body:
+  - `couponId`: ID of the coupon to assign
+  - `userIds`: Array of user IDs to assign the coupon to
+  
+  ## Use Cases:
+  - VIP customer rewards
+  - Birthday/anniversary coupons
+  - Win-back campaigns for inactive users
+  - Loyalty program rewards
+  - Compensation for service issues
+  
+  ## Notes:
+  - Creates user-specific coupon assignments
+  - Users will see these coupons in their "My Coupons" section
+  - Assignments are tracked separately from public coupon usage
+  - Can assign the same coupon to multiple users
+}

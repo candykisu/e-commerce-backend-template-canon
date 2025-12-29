@@ -1,0 +1,27 @@
+meta {
+  name: Search Filters
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/api/search/filters
+  body: none
+  auth: none
+}
+
+docs {
+  # Search Filters
+  
+  Get available search filters for faceted search functionality.
+  
+  ## Query Parameters:
+  - `category`: Category ID for contextual filters (optional)
+  
+  ## Response includes:
+  - Categories with product counts
+  - Price ranges with counts
+  - Popular tags with counts
+  - In-stock product count
+  - Total product count
+}

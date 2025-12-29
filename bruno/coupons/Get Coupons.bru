@@ -1,0 +1,42 @@
+meta {
+  name: Get Coupons
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/api/coupons?page=1&limit=10&type=percentage&isActive=true&sortBy=created_at&sortOrder=desc
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 10
+  type: percentage
+  isActive: true
+  sortBy: created_at
+  sortOrder: desc
+}
+
+docs {
+  # Get Coupons (Admin)
+  
+  Retrieve coupons with filtering, sorting, and pagination.
+  
+  ## Query Parameters:
+  - `page`: Page number (default: 1)
+  - `limit`: Items per page (default: 10, max: 50)
+  - `type`: Filter by coupon type
+  - `isActive`: Filter by active status
+  - `isPublic`: Filter by public visibility
+  - `search`: Search in code, name, or description
+  - `sortBy`: Sort field (created_at, name, code, usage_count, valid_until)
+  - `sortOrder`: Sort direction (asc, desc)
+  
+  ## Response:
+  - Array of coupons with full details
+  - Includes conditions and buy X get Y configurations
+  - Creator information
+  - Pagination metadata
+}

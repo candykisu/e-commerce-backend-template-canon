@@ -1,0 +1,26 @@
+meta {
+  name: Get Question Answers
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseURL}}/api/reviews/questions/1/answers
+  body: none
+  auth: none
+}
+
+docs {
+  # Get Answers for Question
+  
+  Retrieve all approved answers for a specific question.
+  
+  ## Path Parameters:
+  - `questionId`: ID of the question (required)
+  
+  ## Response:
+  - Array of approved answers with user info
+  - Verified purchase status for each answer
+  - Helpfulness counts
+  - Sorted by creation date (newest first)
+}

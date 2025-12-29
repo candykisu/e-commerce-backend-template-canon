@@ -1,0 +1,35 @@
+meta {
+  name: Get Public Coupons
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/api/coupons/public?limit=5
+  body: none
+  auth: none
+}
+
+params:query {
+  limit: 5
+}
+
+docs {
+  # Get Public Coupons
+  
+  Get publicly available coupons for promotional display.
+  
+  ## Query Parameters:
+  - `limit`: Maximum number of coupons to return (default: 10, max: 20)
+  
+  ## Response:
+  - Array of active, public coupons
+  - Suitable for homepage banners, promotional sections
+  - Only includes basic coupon information
+  
+  ## Use Cases:
+  - Homepage promotional banners
+  - Checkout page coupon suggestions
+  - Marketing email content
+  - Social media promotions
+}

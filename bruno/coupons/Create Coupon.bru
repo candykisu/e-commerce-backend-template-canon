@@ -1,0 +1,67 @@
+meta {
+  name: Create Coupon
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/api/coupons
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "code": "SAVE20",
+    "name": "20% Off Everything",
+    "description": "Get 20% off your entire order. Limited time offer!",
+    "type": "percentage",
+    "value": 20,
+    "minimumOrderAmount": 50,
+    "maximumDiscountAmount": 100,
+    "usageLimit": 1000,
+    "userUsageLimit": 1,
+    "isActive": true,
+    "isPublic": true,
+    "stackable": false,
+    "firstTimeCustomerOnly": false,
+    "validFrom": "2024-01-01T00:00:00Z",
+    "validUntil": "2024-12-31T23:59:59Z",
+    "conditions": [
+      {
+        "conditionType": "minimum_quantity",
+        "conditionValue": "2",
+        "isInclusive": true
+      }
+    ]
+  }
+}
+
+docs {
+  # Create Coupon (Admin)
+  
+  Create a new coupon with various discount types and conditions.
+  
+  ## Coupon Types:
+  - `percentage`: Percentage discount (0-100%)
+  - `fixed_amount`: Fixed dollar amount off
+  - `free_shipping`: Free shipping discount
+  - `buy_x_get_y`: Buy X items, get Y items free/discounted
+  
+  ## Request Body:
+  - `code`: Unique coupon code (uppercase, alphanumeric, underscores, hyphens)
+  - `name`: Display name for the coupon
+  - `description`: Optional description
+  - `type`: Discount type
+  - `value`: Discount value (percentage or amount)
+  - `minimumOrderAmount`: Minimum order required (optional)
+  - `maximumDiscountAmount`: Cap on discount amount (optional)
+  - `usageLimit`: Total usage limit (optional, null = unlimited)
+  - `userUsageLimit`: Per-user usage limit (default: 1)
+  - `validFrom`/`validUntil`: Validity period
+  - `conditions`: Array of conditions (optional)
+  - `buyXGetY`: Buy X Get Y configuration (for buy_x_get_y type)
+  
+  ## Response:
+  - Returns created coupon with ID and metadata
+}

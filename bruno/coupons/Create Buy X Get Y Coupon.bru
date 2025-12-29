@@ -1,0 +1,62 @@
+meta {
+  name: Create Buy X Get Y Coupon
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/api/coupons
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "code": "BUY2GET1",
+    "name": "Buy 2 Get 1 Free",
+    "description": "Buy any 2 items from selected categories and get 1 free!",
+    "type": "buy_x_get_y",
+    "value": 0,
+    "usageLimit": 500,
+    "userUsageLimit": 3,
+    "isActive": true,
+    "isPublic": true,
+    "stackable": false,
+    "validFrom": "2024-01-01T00:00:00Z",
+    "validUntil": "2024-06-30T23:59:59Z",
+    "buyXGetY": {
+      "buyQuantity": 2,
+      "getQuantity": 1,
+      "buyCategoryIds": [1, 2, 3],
+      "getCategoryIds": [1, 2, 3],
+      "getDiscountType": "free",
+      "getDiscountValue": 0
+    }
+  }
+}
+
+docs {
+  # Create Buy X Get Y Coupon
+  
+  Create a complex Buy X Get Y promotion coupon.
+  
+  ## Buy X Get Y Configuration:
+  - `buyQuantity`: Number of items customer must buy
+  - `getQuantity`: Number of items customer gets free/discounted
+  - `buyProductIds`: Specific products that qualify for "buy" (optional)
+  - `getProductIds`: Specific products that are free/discounted (optional)
+  - `buyCategoryIds`: Categories that qualify for "buy" (optional)
+  - `getCategoryIds`: Categories that are free/discounted (optional)
+  - `getDiscountType`: Type of discount on "get" items (free, percentage, fixed_amount)
+  - `getDiscountValue`: Discount value for "get" items
+  
+  ## Examples:
+  - Buy 2 Get 1 Free: buyQuantity=2, getQuantity=1, getDiscountType=free
+  - Buy 3 Get 1 Half Off: buyQuantity=3, getQuantity=1, getDiscountType=percentage, getDiscountValue=50
+  - Buy Any 2 Shirts Get $10 Off 3rd: Specific product/category targeting
+  
+  ## Complex Scenarios:
+  - Cross-category promotions
+  - Tiered discounts
+  - Product-specific BOGO deals
+}

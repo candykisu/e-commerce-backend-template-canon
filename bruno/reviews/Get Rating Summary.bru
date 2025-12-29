@@ -1,0 +1,33 @@
+meta {
+  name: Get Rating Summary
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/api/reviews/products/1/summary
+  body: none
+  auth: none
+}
+
+docs {
+  # Get Product Rating Summary
+  
+  Get aggregated rating statistics for a product.
+  
+  ## Path Parameters:
+  - `productId`: ID of the product (required)
+  
+  ## Response:
+  - `totalReviews`: Total number of reviews
+  - `averageRating`: Average rating (1-5)
+  - `rating1Count` to `rating5Count`: Count of reviews for each rating
+  - `verifiedPurchaseCount`: Number of verified purchase reviews
+  - `recommendedCount`: Number of users who recommend the product
+  - `lastReviewAt`: Timestamp of most recent review
+  
+  ## Use Cases:
+  - Display star ratings on product pages
+  - Show rating distribution charts
+  - Calculate recommendation percentages
+}

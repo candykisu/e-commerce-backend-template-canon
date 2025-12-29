@@ -1,0 +1,40 @@
+meta {
+  name: Apply Coupon
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/api/coupons/apply
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "couponCode": "SAVE20",
+    "cartId": 123,
+    "userId": "123e4567-e89b-12d3-a456-426614174000"
+  }
+}
+
+docs {
+  # Apply Coupon to Cart
+  
+  Apply a validated coupon to a user's cart.
+  
+  ## Request Body:
+  - `couponCode`: The coupon code to apply
+  - `cartId`: Cart ID (for guest carts)
+  - `userId`: User ID (for user carts)
+  
+  ## Response:
+  - `coupon`: Applied coupon details
+  - `discountAmount`: Discount amount applied
+  
+  ## Notes:
+  - Coupon must be validated before applying
+  - Updates cart with discount information
+  - Records coupon usage for tracking
+  - Handles both guest and user carts
+}

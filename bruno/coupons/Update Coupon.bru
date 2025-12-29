@@ -1,0 +1,66 @@
+meta {
+  name: Update Coupon
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseURL}}/api/coupons/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Updated 25% Off Everything",
+    "description": "Get 25% off your entire order. Extended offer!",
+    "value": 25,
+    "minimumOrderAmount": 75,
+    "maximumDiscountAmount": 150,
+    "usageLimit": 2000,
+    "userUsageLimit": 2,
+    "isActive": true,
+    "isPublic": true,
+    "stackable": false,
+    "firstTimeCustomerOnly": false,
+    "validFrom": "2024-01-01T00:00:00Z",
+    "validUntil": "2024-12-31T23:59:59Z"
+  }
+}
+
+docs {
+  # Update Coupon (Admin)
+  
+  Update an existing coupon's configuration. Note that the coupon code cannot be changed.
+  
+  ## Path Parameters:
+  - `couponId`: The unique identifier of the coupon to update
+  
+  ## Request Body (All Optional):
+  - `name`: Display name for the coupon
+  - `description`: Coupon description
+  - `value`: Discount value (percentage or amount)
+  - `minimumOrderAmount`: Minimum order required
+  - `maximumDiscountAmount`: Cap on discount amount
+  - `usageLimit`: Total usage limit (null = unlimited)
+  - `userUsageLimit`: Per-user usage limit
+  - `isActive`: Whether coupon is active
+  - `isPublic`: Whether coupon is publicly visible
+  - `stackable`: Whether coupon can be combined with others
+  - `firstTimeCustomerOnly`: Restrict to first-time customers
+  - `validFrom`/`validUntil`: Validity period
+  
+  ## Response:
+  - Updated coupon details
+  
+  ## Notes:
+  - Cannot change coupon code or type after creation
+  - Cannot change buy X get Y configuration
+  - Validation ensures data integrity
+  - Changes take effect immediately
+  
+  ## Error Responses:
+  - 404: Coupon not found
+  - 400: Invalid update data
+  - 409: Validation constraints violated
+}

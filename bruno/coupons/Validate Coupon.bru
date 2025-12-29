@@ -1,0 +1,68 @@
+meta {
+  name: Validate Coupon
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/api/coupons/validate
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "couponCode": "SAVE20",
+    "cartTotal": 150.00,
+    "cartItems": [
+      {
+        "productId": 1,
+        "categoryId": 1,
+        "quantity": 2,
+        "price": 50.00
+      },
+      {
+        "productId": 2,
+        "categoryId": 1,
+        "quantity": 1,
+        "price": 50.00
+      }
+    ],
+    "userId": "123e4567-e89b-12d3-a456-426614174000"
+  }
+}
+
+docs {
+  # Validate Coupon
+  
+  Validate a coupon against a cart to check if it can be applied.
+  
+  ## Request Body:
+  - `couponCode`: The coupon code to validate
+  - `cartTotal`: Total cart amount before discount
+  - `cartItems`: Array of cart items with product details
+  - `userId`: Optional user ID for usage limit checking
+  
+  ## Cart Item Properties:
+  - `productId`: Product identifier
+  - `categoryId`: Product category identifier
+  - `quantity`: Item quantity
+  - `price`: Item price
+  
+  ## Response (Valid):
+  - `success: true`
+  - `coupon`: Coupon details
+  - `discountAmount`: Calculated discount amount
+  - `applicableItems`: Items the discount applies to
+  
+  ## Response (Invalid):
+  - `success: false`
+  - `message`: Error message explaining why coupon is invalid
+  
+  ## Validation Checks:
+  - Coupon exists and is active
+  - Within validity period
+  - Usage limits not exceeded
+  - Minimum order amount met
+  - Conditions satisfied
+}

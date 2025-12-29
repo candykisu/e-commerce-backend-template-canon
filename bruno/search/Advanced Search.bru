@@ -1,0 +1,45 @@
+meta {
+  name: Advanced Search
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/api/search/products?q=laptop&category=1&minPrice=100&maxPrice=2000&sortBy=price_asc&page=1&limit=10
+  body: none
+  auth: none
+}
+
+params:query {
+  q: laptop
+  category: 1
+  minPrice: 100
+  maxPrice: 2000
+  sortBy: price_asc
+  page: 1
+  limit: 10
+}
+
+docs {
+  # Advanced Product Search
+  
+  This endpoint provides comprehensive product search with multiple filters and sorting options.
+  
+  ## Query Parameters:
+  - `q`: Search query (optional)
+  - `category`: Category ID filter (optional)
+  - `minPrice`: Minimum price filter (optional)
+  - `maxPrice`: Maximum price filter (optional)
+  - `tags`: Comma-separated tags (optional)
+  - `inStock`: Filter for in-stock products only (optional)
+  - `featured`: Filter for featured products only (optional)
+  - `sortBy`: Sort order - relevance, price_asc, price_desc, name_asc, name_desc, newest, oldest, rating
+  - `page`: Page number (default: 1)
+  - `limit`: Items per page (default: 10, max: 50)
+  
+  ## Response includes:
+  - Products array with full product details
+  - Search filters with counts for faceted search
+  - Search suggestions for query improvement
+  - Pagination metadata
+}

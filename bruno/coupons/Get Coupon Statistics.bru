@@ -1,0 +1,41 @@
+meta {
+  name: Get Coupon Statistics
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseURL}}/api/coupons/statistics?period=30d&couponId=1
+  body: none
+  auth: none
+}
+
+params:query {
+  period: 30d
+  couponId: 1
+}
+
+docs {
+  # Get Coupon Statistics (Admin)
+  
+  Get comprehensive statistics about coupon usage and performance.
+  
+  ## Query Parameters:
+  - `period`: Time period for statistics (7d, 30d, 90d, 1y, all)
+  - `couponId`: Get statistics for specific coupon (optional)
+  
+  ## Response Includes:
+  - `totalCoupons`: Total number of coupons created
+  - `activeCoupons`: Number of currently active coupons
+  - `totalUsages`: Total coupon redemptions
+  - `totalDiscountAmount`: Total discount amount given
+  - `topCoupons`: Most popular coupons by usage
+  - `usageByPeriod`: Usage trends over time
+  
+  ## Use Cases:
+  - Admin dashboard metrics
+  - Marketing campaign analysis
+  - ROI calculation for promotions
+  - Coupon performance optimization
+  - Business intelligence reporting
+}

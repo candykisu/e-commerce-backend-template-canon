@@ -1,0 +1,30 @@
+meta {
+  name: Recently Viewed
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseURL}}/api/search/recently-viewed?ids=1,2,3&limit=5
+  body: none
+  auth: none
+}
+
+params:query {
+  ids: 1,2,3
+  limit: 5
+}
+
+docs {
+  # Recently Viewed Products
+  
+  Get recently viewed products based on product IDs (typically stored in cookies/session).
+  
+  ## Query Parameters:
+  - `ids`: Comma-separated list of product IDs (optional)
+  - `limit`: Maximum products to return (default: 5)
+  
+  ## Response includes:
+  - Array of recently viewed products in the order of the IDs provided
+  - Only active products are returned
+}

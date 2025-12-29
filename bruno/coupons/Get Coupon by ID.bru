@@ -1,0 +1,39 @@
+meta {
+  name: Get Coupon by ID
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/api/coupons/1
+  body: none
+  auth: none
+}
+
+docs {
+  # Get Coupon by ID (Admin)
+  
+  Retrieve a specific coupon by its ID with full details.
+  
+  ## Path Parameters:
+  - `couponId`: The unique identifier of the coupon
+  
+  ## Response:
+  - Complete coupon details including:
+    - Basic information (code, name, description)
+    - Discount configuration (type, value, limits)
+    - Validity period and status
+    - Usage statistics
+    - Conditions and buy X get Y configuration
+    - Creator information
+  
+  ## Use Cases:
+  - Admin coupon management
+  - Coupon detail view
+  - Editing coupon information
+  - Viewing coupon performance
+  
+  ## Error Responses:
+  - 404: Coupon not found
+  - 400: Invalid coupon ID format
+}

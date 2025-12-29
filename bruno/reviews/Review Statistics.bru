@@ -1,0 +1,36 @@
+meta {
+  name: Review Statistics
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseURL}}/api/reviews/statistics?period=30d
+  body: none
+  auth: none
+}
+
+params:query {
+  period: 30d
+}
+
+docs {
+  # Get Review Statistics (Admin)
+  
+  Get comprehensive review statistics for admin dashboard.
+  
+  ## Query Parameters:
+  - `period`: Time period (7d, 30d, 90d, 1y, all) - default: 30d
+  
+  ## Response:
+  - `totalReviews`: Total number of reviews
+  - `averageRating`: Overall average rating
+  - `reviewsByRating`: Breakdown by rating (1-5 stars)
+  - `verifiedPurchasePercentage`: Percentage of verified reviews
+  - `recommendationRate`: Percentage of users who recommend products
+  
+  ## Use Cases:
+  - Admin dashboard metrics
+  - Business intelligence reporting
+  - Quality monitoring
+}

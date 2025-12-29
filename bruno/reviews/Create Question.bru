@@ -1,0 +1,37 @@
+meta {
+  name: Create Question
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/api/reviews/questions
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "productId": 1,
+    "question": "What is the warranty period for this product? Does it cover accidental damage?"
+  }
+}
+
+docs {
+  # Create Product Question
+  
+  Ask a question about a product that other users can answer.
+  
+  ## Request Body:
+  - `productId`: ID of the product (required)
+  - `question`: The question text (required, 10-500 chars)
+  
+  ## Response:
+  - Returns the created question with ID and metadata
+  - Question will be pending approval by default
+  
+  ## Use Cases:
+  - Pre-purchase inquiries
+  - Technical specifications questions
+  - Usage and compatibility questions
+}

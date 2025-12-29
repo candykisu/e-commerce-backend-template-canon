@@ -1,0 +1,31 @@
+meta {
+  name: Related Products
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/api/search/related/1?limit=6
+  body: none
+  auth: none
+}
+
+params:query {
+  limit: 6
+}
+
+docs {
+  # Related Products
+  
+  Get products related to a specific product based on category and tags.
+  
+  ## Path Parameters:
+  - `productId`: Product ID to find related products for (required)
+  
+  ## Query Parameters:
+  - `limit`: Maximum related products to return (default: 6)
+  
+  ## Response includes:
+  - Array of related products with full details
+  - Products are sorted by relevance (same category first, then tag overlap)
+}
