@@ -1,0 +1,36 @@
+meta {
+  name: Create Product
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/api/products
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "MacBook Pro 16-inch",
+    "description": "Apple MacBook Pro with M2 chip, 16-inch display",
+    "sku": "MBP-16-M2-512",
+    "price": "2499.99",
+    "compareAtPrice": "2699.99",
+    "categoryId": 1,
+    "images": ["https://example.com/macbook1.jpg", "https://example.com/macbook2.jpg"],
+    "weight": 2.1,
+    "dimensions": "35.57 x 24.81 x 1.68 cm",
+    "quantity": 50,
+    "trackQuantity": true,
+    "allowBackorder": false,
+    "status": "active",
+    "tags": ["apple", "laptop", "macbook", "m2"],
+    "metaTitle": "MacBook Pro 16-inch - Apple M2 Chip",
+    "metaDescription": "Powerful MacBook Pro with M2 chip for professionals"
+  }
+}
+
+docs {
+  Create a new product with full details including pricing, inventory, and SEO
+}

@@ -1,0 +1,22 @@
+meta {
+  name: Cancel Order
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseURL}}/api/orders/1/cancel
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "reason": "Customer requested cancellation",
+    "refundAmount": 5529.96
+  }
+}
+
+docs {
+  Cancel an order with reason and optional refund amount
+}

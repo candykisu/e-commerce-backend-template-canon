@@ -1,0 +1,18 @@
+meta {
+  name: Get System Statistics
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseURL}}/api/admin/stats/system
+  body: none
+  auth: none
+}
+
+docs {
+  Get system statistics including:
+  - Database table information
+  - Active and expired cart counts
+  - System health metrics
+}

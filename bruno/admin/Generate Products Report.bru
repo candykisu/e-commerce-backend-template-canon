@@ -1,0 +1,22 @@
+meta {
+  name: Generate Products Report
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{baseURL}}/api/admin/reports
+  body: none
+  auth: none
+}
+
+params:query {
+  type: products
+  format: csv
+  ~dateFrom: 2024-01-01T00:00:00Z
+  ~dateTo: 2024-12-31T23:59:59Z
+}
+
+docs {
+  Generate products report in CSV format for download
+}

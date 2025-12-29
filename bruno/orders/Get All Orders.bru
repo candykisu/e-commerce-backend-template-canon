@@ -1,0 +1,23 @@
+meta {
+  name: Get All Orders
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/api/orders
+  body: none
+  auth: none
+}
+
+params:query {
+  ~page: 1
+  ~limit: 20
+  ~userId: 550e8400-e29b-41d4-a716-446655440000
+  ~status: pending
+  ~paymentStatus: paid
+}
+
+docs {
+  Get paginated list of orders with filtering options
+}

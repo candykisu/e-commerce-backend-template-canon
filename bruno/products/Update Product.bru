@@ -1,0 +1,24 @@
+meta {
+  name: Update Product
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/api/products/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "MacBook Pro 16-inch (Updated)",
+    "price": "2399.99",
+    "quantity": 45,
+    "status": "active"
+  }
+}
+
+docs {
+  Update product information including pricing and inventory
+}

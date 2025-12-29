@@ -1,0 +1,19 @@
+meta {
+  name: Get User Addresses
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/api/addresses/user/550e8400-e29b-41d4-a716-446655440000
+  body: none
+  auth: none
+}
+
+params:query {
+  ~type: shipping
+}
+
+docs {
+  Get all addresses for a specific user, optionally filtered by type
+}

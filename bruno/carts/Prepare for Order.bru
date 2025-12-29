@@ -1,0 +1,15 @@
+meta {
+  name: Prepare Cart for Order
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{baseURL}}/api/carts/1/prepare-order
+  body: none
+  auth: none
+}
+
+docs {
+  Prepare cart data for order creation with formatted items and subtotal
+}
