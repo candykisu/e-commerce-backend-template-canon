@@ -76,8 +76,8 @@ export const toRatingSummaryDto = (summary: ProductRatingSummary | null) => {
     };
   }
 
-  const recommendationRate = summary.totalReviews > 0 
-    ? Math.round((summary.recommendedCount / summary.totalReviews) * 100) 
+  const recommendationRate = (summary.totalReviews || 0) > 0 
+    ? Math.round(((summary.recommendedCount || 0) / (summary.totalReviews || 1)) * 100) 
     : 0;
 
   return {

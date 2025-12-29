@@ -45,7 +45,7 @@ export const trackSearchComplete = async (req: SearchRequest, res: Response, nex
     // Extract user info
     const userAgent = req.get('User-Agent') || '';
     const ipAddress = req.ip || req.connection.remoteAddress || '';
-    const sessionId = req.sessionID || '';
+    const sessionId = (req as any).sessionID || (req as any).session?.id || '';
     const userId = (req as any).user?.id || null; // Assuming auth middleware sets req.user
 
     // Log search analytics
@@ -92,7 +92,7 @@ async function updatePopularSearches(query: string, resultsCount: number): Promi
       // Update existing record
       const newSearchCount = existingRecord.searchCount + 1;
       const newAvgResults = Math.round(
-        (existingRecord.avgResultsCount * existingRecord.searchCount + resultsCount) / newSearchCount
+        ((existingRecord.avgResultsCount || 0) * existingRecord.searchCount + resultsCount) / newSearchCount
       );
 
       await db
@@ -127,7 +127,7 @@ export const trackSearchClick = async (req: Request, res: Response, next: NextFu
 
     if (productId && searchQuery) {
       // Find the most recent search analytics record for this session/user
-      const sessionId = req.sessionID || '';
+      const sessionId = (req as any).sessionID || (req as any).session?.id || '';
       const userId = (req as any).user?.id || null;
 
       await db

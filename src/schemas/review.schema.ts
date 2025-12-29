@@ -33,8 +33,8 @@ export const reviewHelpfulnessSchema = z.object({
 // Get reviews schema
 export const getReviewsSchema = z.object({
   query: z.object({
-    page: z.string().transform(val => parseInt(val) || 1).default('1'),
-    limit: z.string().transform(val => Math.min(parseInt(val) || 10, 50)).default('10'),
+    page: z.string().transform(val => parseInt(val) || 1).default(() => 1),
+    limit: z.string().transform(val => Math.min(parseInt(val) || 10, 50)).default(() => 10),
     rating: z.string().transform(val => val ? parseInt(val) : undefined).optional(),
     sortBy: z.enum(['newest', 'oldest', 'rating_high', 'rating_low', 'helpful']).default('newest'),
     verifiedOnly: z.string().transform(val => val === 'true').optional(),
@@ -60,8 +60,8 @@ export const createAnswerSchema = z.object({
 // Get questions schema
 export const getQuestionsSchema = z.object({
   query: z.object({
-    page: z.string().transform(val => parseInt(val) || 1).default('1'),
-    limit: z.string().transform(val => Math.min(parseInt(val) || 10, 20)).default('10'),
+    page: z.string().transform(val => parseInt(val) || 1).default(() => 1),
+    limit: z.string().transform(val => Math.min(parseInt(val) || 10, 20)).default(() => 10),
     sortBy: z.enum(['newest', 'oldest', 'most_answers']).default('newest'),
   }),
 });

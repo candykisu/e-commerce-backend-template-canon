@@ -424,7 +424,7 @@ export const updateProductRatingSummary = async (productId: number): Promise<voi
     const summaryData = {
       productId,
       totalReviews: Number(stat.totalReviews || 0),
-      averageRating: stat.averageRating ? Number(Number(stat.averageRating).toFixed(2)) : 0,
+      averageRating: stat.averageRating ? Number(stat.averageRating).toFixed(2) : '0.00',
       rating1Count: Number(stat.rating1Count || 0),
       rating2Count: Number(stat.rating2Count || 0),
       rating3Count: Number(stat.rating3Count || 0),
@@ -530,7 +530,19 @@ export const getProductQuestions = async (
     const total = Number(totalResult[0]?.count || 0);
 
     logger.info('Product questions retrieved', { productId, total, returned: questions.length });
-    return { questions, total };
+    
+    // Filter out questions without users and map to expected format
+    const validQuestions = questions
+      .filter(q => q.user && q.user.firstName && q.user.lastName)
+      .map(q => ({
+        ...q,
+        user: {
+          firstName: q.user!.firstName!,
+          lastName: q.user!.lastName!,
+        }
+      }));
+    
+    return { questions: validQuestions, total };
   } catch (error) {
     logger.error('Error getting product questions:', error);
     throw error;
@@ -592,7 +604,18 @@ export const getQuestionAnswers = async (questionId: number): Promise<Array<Revi
       )
       .orderBy(desc(reviewAnswers.createdAt));
 
-    return answers;
+    // Filter out answers without users and map to expected format
+    const validAnswers = answers
+      .filter(a => a.user && a.user.firstName && a.user.lastName)
+      .map(a => ({
+        ...a,
+        user: {
+          firstName: a.user!.firstName!,
+          lastName: a.user!.lastName!,
+        }
+      }));
+
+    return validAnswers;
   } catch (error) {
     logger.error('Error getting question answers:', error);
     throw error;

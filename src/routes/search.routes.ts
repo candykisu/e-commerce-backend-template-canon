@@ -155,7 +155,7 @@ const router = Router();
 router.get('/products', 
   trackSearchStart,
   validate(searchProductsSchema), 
-  searchController.searchProducts,
+  searchController.searchProducts as any,
   trackSearchComplete
 );
 
@@ -209,7 +209,7 @@ router.get('/products',
  *                     query:
  *                       type: string
  */
-router.get('/suggestions', validate(searchSuggestionsSchema), searchController.getSearchSuggestions);
+router.get('/suggestions', validate(searchSuggestionsSchema), searchController.getSearchSuggestions as any);
 
 /**
  * @swagger

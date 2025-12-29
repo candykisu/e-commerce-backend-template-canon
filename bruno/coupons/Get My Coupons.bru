@@ -1,0 +1,32 @@
+meta {
+  name: Get My Coupons
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/api/coupons/my-coupons
+  body: none
+  auth: none
+}
+
+docs {
+  # Get My Available Coupons
+  
+  Get coupons available to the current user.
+  
+  ## Response:
+  - Array of coupons available to the user
+  - Includes both public coupons and user-specific assigned coupons
+  - Only shows unused, valid, active coupons
+  
+  ## Coupon Sources:
+  - Public coupons (available to all users)
+  - User-specific assigned coupons
+  - First-time customer coupons (if applicable)
+  
+  ## Use Cases:
+  - User account coupon section
+  - Checkout page coupon selection
+  - Mobile app coupon wallet
+}

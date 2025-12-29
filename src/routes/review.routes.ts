@@ -135,7 +135,7 @@ router.post('/', validate(createReviewSchema), reviewController.createReview);
  *       404:
  *         description: Product not found
  */
-router.get('/products/:productId', validate(getReviewsSchema), reviewController.getProductReviews);
+router.get('/products/:productId', validate(getReviewsSchema), reviewController.getProductReviews as any);
 
 /**
  * @swagger
@@ -316,7 +316,7 @@ router.post('/questions', validate(createQuestionSchema), reviewController.creat
  *       404:
  *         description: Product not found
  */
-router.get('/products/:productId/questions', validate(getQuestionsSchema), reviewController.getProductQuestions);
+router.get('/products/:productId/questions', validate(getQuestionsSchema), reviewController.getProductQuestions as any);
 
 /**
  * @swagger

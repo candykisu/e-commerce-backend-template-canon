@@ -96,6 +96,20 @@ docs {
   - GET /api/reviews/questions/{questionId}/answers - Get question answers
   - GET /api/reviews/statistics - Review statistics (admin)
   
+  ### 🎫 Coupons & Discounts (12 endpoints)
+  - POST /api/coupons - Create coupon (admin)
+  - GET /api/coupons - Get coupons with filters (admin)
+  - GET /api/coupons/public - Get public coupons for display
+  - GET /api/coupons/my-coupons - Get user's available coupons
+  - POST /api/coupons/validate - Validate coupon for cart
+  - POST /api/coupons/apply - Apply coupon to cart
+  - POST /api/coupons/remove - Remove coupon from cart
+  - GET /api/coupons/{couponId} - Get coupon by ID (admin)
+  - PUT /api/coupons/{couponId} - Update coupon (admin)
+  - DELETE /api/coupons/{couponId} - Delete coupon (admin)
+  - POST /api/coupons/assign - Assign coupon to users (admin)
+  - GET /api/coupons/statistics - Coupon statistics (admin)
+  
   ### 🔧 Admin Panel (19 endpoints)
   - GET /api/admin/dashboard - Dashboard analytics
   - GET /api/admin/analytics/{type} - Detailed analytics

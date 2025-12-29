@@ -1,10 +1,10 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 import { z, ZodError } from 'zod';
 import { logger } from '../utils';
 import { appConfig } from '../config'; // Import appConfig
 
 export const validate =
-  (schema: z.Schema) =>
+  (schema: z.Schema): RequestHandler =>
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       await schema.parseAsync({

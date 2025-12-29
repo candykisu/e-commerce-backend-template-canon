@@ -26,14 +26,16 @@ export const searchProducts = asyncHandler(
         products: productsDto,
         filters: searchResult.filters,
         suggestions: searchResult.suggestions,
+        meta: {
+          query: req.query.q,
+          sortBy: req.query.sortBy,
+        }
       },
       {
         page: req.query.page,
         limit: req.query.limit,
         total: searchResult.total,
         pages: Math.ceil(searchResult.total / req.query.limit),
-        query: req.query.q,
-        sortBy: req.query.sortBy,
       }
     );
   }

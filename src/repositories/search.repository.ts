@@ -208,14 +208,16 @@ export const getSearchFilters = async (searchParams: SearchProductsInput | Searc
     // Apply existing filters to get contextual filter counts
     if ('q' in searchParams && searchParams.q) {
       const searchTerm = searchParams.q.trim();
-      conditions.push(
-        or(
-          like(products.name, `%${searchTerm}%`),
-          like(products.description, `%${searchTerm}%`),
-          like(products.sku, `%${searchTerm}%`),
-          sql`${products.tags} && ARRAY[${searchTerm}]::text[]`
-        )
-      );
+      const searchConditions = [
+        like(products.name, `%${searchTerm}%`),
+        like(products.description, `%${searchTerm}%`),
+        like(products.sku, `%${searchTerm}%`),
+        sql`${products.tags} && ARRAY[${searchTerm}]::text[]`
+      ].filter(Boolean);
+      
+      if (searchConditions.length > 0) {
+        conditions.push(or(...searchConditions) as any);
+      }
     }
 
     if ('category' in searchParams && searchParams.category) {
@@ -318,11 +320,13 @@ export const getSearchFilters = async (searchParams: SearchProductsInput | Searc
       .where(whereClause);
 
     return {
-      categories: categoryFilters.map(cat => ({
-        id: cat.id,
-        name: cat.name,
-        count: Number(cat.count),
-      })),
+      categories: categoryFilters
+        .filter(cat => cat.id !== null && cat.name !== null)
+        .map(cat => ({
+          id: cat.id!,
+          name: cat.name!,
+          count: Number(cat.count),
+        })),
       priceRanges: priceRanges.filter(range => range.count > 0),
       tags: topTags,
       inStockCount: Number(inStockResult?.count || 0),
