@@ -1,0 +1,38 @@
+meta {
+  name: Remove Coupon
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseURL}}/api/coupons/remove
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "couponCode": "SAVE20",
+    "cartId": 123
+  }
+}
+
+docs {
+  # Remove Coupon from Cart
+  
+  Remove a previously applied coupon from the cart.
+  
+  ## Request Body:
+  - `couponCode`: The coupon code to remove
+  - `cartId`: Cart ID (for guest carts)
+  
+  ## Response:
+  - Success confirmation
+  - Updated cart totals (would be handled by cart service)
+  
+  ## Use Cases:
+  - User changes mind about using coupon
+  - Applying a different coupon (remove old one first)
+  - Cart modifications that make coupon invalid
+  - Checkout process coupon management
+}

@@ -1,0 +1,30 @@
+meta {
+  name: Search Suggestions
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/api/search/suggestions?q=lap&limit=5
+  body: none
+  auth: none
+}
+
+params:query {
+  q: lap
+  limit: 5
+}
+
+docs {
+  # Search Suggestions (Autocomplete)
+  
+  Get search suggestions for autocomplete functionality.
+  
+  ## Query Parameters:
+  - `q`: Search query (required, minimum 1 character)
+  - `limit`: Maximum suggestions (default: 5, max: 10)
+  
+  ## Response includes:
+  - Array of suggestion objects with text, type (product/category/brand), and count
+  - Original query for reference
+}

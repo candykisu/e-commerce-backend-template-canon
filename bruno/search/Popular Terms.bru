@@ -1,0 +1,27 @@
+meta {
+  name: Popular Terms
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/api/search/popular-terms?limit=10
+  body: none
+  auth: none
+}
+
+params:query {
+  limit: 10
+}
+
+docs {
+  # Popular Search Terms
+  
+  Get popular search terms for search suggestions and trending searches.
+  
+  ## Query Parameters:
+  - `limit`: Maximum terms to return (default: 10)
+  
+  ## Response includes:
+  - Array of popular search terms
+}

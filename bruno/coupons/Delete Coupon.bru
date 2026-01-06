@@ -1,0 +1,45 @@
+meta {
+  name: Delete Coupon
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{baseURL}}/api/coupons/1
+  body: none
+  auth: none
+}
+
+docs {
+  # Delete Coupon (Admin)
+  
+  Permanently delete a coupon from the system.
+  
+  ## Path Parameters:
+  - `couponId`: The unique identifier of the coupon to delete
+  
+  ## Response:
+  - Success confirmation message
+  
+  ## Important Notes:
+  - This is a permanent action and cannot be undone
+  - Consider deactivating instead of deleting for historical data
+  - Deleting a coupon may affect:
+    - Historical order records
+    - Analytics and reporting
+    - Customer service inquiries
+  
+  ## Recommended Workflow:
+  1. First deactivate the coupon (set `isActive: false`)
+  2. Monitor for any issues or customer inquiries
+  3. Only delete if absolutely necessary
+  
+  ## Alternative Approach:
+  - Use `PUT /:couponId` to set `isActive: false` instead
+  - This preserves data for reporting and customer service
+  
+  ## Error Responses:
+  - 404: Coupon not found
+  - 400: Invalid coupon ID format
+  - 409: Cannot delete coupon with active usage (if implemented)
+}
